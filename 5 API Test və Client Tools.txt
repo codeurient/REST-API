@@ -1,0 +1,50 @@
+API-ləri yoxlamaq və sorğu göndərmək üçün Postman və buna bənzər fərqli alətlərdən istifadə edilir.
+
+
+Amma tək Postman deyil, bir çox alternativlər də var — bəziləri tam pulsuz, bəziləri məhdudiyyətli pulsuz planla.
+Bunlar API-yə sorğu göndərmək, test etmək və debug etmək üçündür:
+
+
+
+1. Insomnia
+    - REST, GraphQL, gRPC dəstəkləyir.
+    - Sadə interfeysi var, Postman-dan daha yüngüldür.
+    - Açıq mənbəli versiyası da var. 
+    - Uyğun: Həm sadə testlər, həm də böyük layihələr üçün.
+
+
+2. Hoppscotch (əvvəllər Postwoman)
+    - Tamamilə pulsuz və open-source.
+    - Brauzerdə işləyir (heç nə yükləmək lazım deyil).
+    - REST, GraphQL, WebSocket test edə bilir.
+    - Uyğun: Tez-tez brauzerdən istifadə edənlər üçün.
+
+
+3. Paw (yalnız macOS üçün)
+    - Yüksək keyfiyyətli dizaynı var.
+    - Qrafik interfeys ilə API-ləri test etməklə yanaşı sənədləşdirə də bilir.
+    - Pul qarşılığında satılır, amma çox güclüdür.
+
+
+
+4. Bruno
+    - Yaxın vaxtlarda çıxıb, amma çox sürətli inkişaf edir.
+    - Açıq mənbəli (open-source) və pulsuz.
+    - Bütün sorğular JSON fayllarda saxlanılır → Git ilə rahat işləyir.
+    - Uyğun: Kod yönümlü developer-lər üçün.
+
+
+
+5. cURL (komanda xətti aləti)
+    - Terminaldan API test etmək üçün.
+    - Məsələn: curl -X GET https://example.com/api/foods
+    - Ən sadə, amma qrafik interfeysi yoxdur. 
+    - Uyğun: Komanda xəttində işləməyi sevənlər üçün.
+
+
+
+6. HTTPie
+    - cURL-un daha sadə və oxunaqlı alternativi.
+    - Misal: http GET https://example.com/api/foods
+    - Açıq mənbəli və çox rahatdır.
+
