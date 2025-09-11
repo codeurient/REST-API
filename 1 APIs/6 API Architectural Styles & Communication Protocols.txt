@@ -567,3 +567,80 @@ Harada istifadə olunur?
 
 
 ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+20 (iyirmi) fərqli API üslubu / protokolu / texnologiyası sadaladıq və bunların hər biri real həyatda istifadə olunur. 
+Amma tələbələr üçün dərslik hazırlayarkən əsas məsələ öyrədicilik və praktik tətbiq olmalıdır.
+
+
+Əsas seçim meyarları bunlar olmalıdır:
+    - Sadə başa düşülməsi
+    - Real həyatda geniş istifadə olunması
+    - Backend və frontend-lə inteqrasiya nümunələrinin rahat göstərilməsi
+    - Həm nəzəri, həm praktik olaraq tələbələrə fayda verməsi
+
+
+
+
+    Geniş istifadə edilən və öyrədici API texnologiyaları:
+
+a) REST API (və RESTful API)
+    - Ən çox istifadə olunan API yanaşmasıdır (web development, mobil tətbiqlər, IoT).
+    - JSON ilə işləyir, HTTP metodları (GET, POST, PUT, DELETE) istifadə olunur.
+    - Sadə nümunələrlə tələbələrə rahat öyrədilir.
+    - Praktik tapşırıq: “Todo app” üçün REST API qurmaq.
+
+b) HTTP əsaslı nümunələr
+    - Çünki REST də, GraphQL də, SOAP da, JSON-RPC də HTTP üzərində işləyir.
+    - Tələbələrə HTTP status kodları, headers, methods izah edilməlidir.
+
+c) GraphQL
+    - Son illərdə çox populyarlaşıb (Facebook tərəfindən hazırlanıb).
+    - Müasir web və mobil layihələrdə REST-ə alternativ kimi istifadə olunur.
+    - Tələbələrə “datanı dəqiq seçmək” (overfetching/underfetching) problemini izah etmək üçün çox öyrədicidir.
+
+d) WebSockets (və SSE)
+    - Real-time tətbiqlər üçün mütləq öyrədici nümunədir (chat app, canlı bildirişlər).
+    - REST + WebSocket kombinasiyası müasir layihələrdə ən praktik yanaşmadır.
+
+e) SOAP (köhnə, amma öyrədici)
+    - Hələ də bəzi bank, hökumət və enterprise sistemlər SOAP istifadə edir.
+    - REST-lə müqayisə etmək üçün qısa izah və sadə XML nümunəsi faydalıdır.
+
+f) RPC (JSON-RPC, gRPC, Thrift, Avro)
+    - RPC yanaşması REST və GraphQL-dən fərqli düşüncə tərzini göstərir.
+    - gRPC Google-un modern həllidir, mikroservis arxitekturalarında çox istifadə olunur.
+    - Sadə bir HelloService nümunəsi tələbələr üçün yaxşı olar.
+
+g) MQTT və AMQP (mesajlaşma əsaslı API-lər)
+    - IoT və message queue sistemləri üçün çox öyrədici mövzudur.
+    - Sadə MQTT broker nümunəsi ilə sensor məlumatı göndərmək öyrədici olar.
+
+
+
+
+Tələbələr üçün dərslikdə istifadə üçün ən uyğunu texnologiyalar bunlar olsa yaxşıdır:
+
+    Əsas öyrədici baza:
+        ✅ HTTP (əsas protokol)
+        ✅ REST API (RESTful üslub)
+
+    Müasir yanaşmalar:
+        ✅ GraphQL
+        ✅ WebSockets / SSE
+
+    Müqayisə üçün əlavə qısa bölmələr:
+        ✅ SOAP (tarixi və fərqləri göstərmək üçün)
+        ✅ gRPC (RPC nümunəsi)
+        ✅ MQTT və AMQP (IoT və mesajlaşma nümunələri üçün)
+
+
+    
+2ci qovluqdan dəvam edəcəyik...
