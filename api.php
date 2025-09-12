@@ -1,5 +1,5 @@
 <?php
-// JSON header göndərək
+// JSON header
 header('Content-Type: application/json');
 
 // Sadələşdirilmiş user array
@@ -8,11 +8,16 @@ $users = [
     2 => ['id' => 2, 'name' => 'Vəli', 'email' => 'veli@example.com']
 ];
 
-// İstək parametrlərini oxu
+// Request məlumatlarını oxu
 $method = $_SERVER['REQUEST_METHOD']; // GET, POST, PUT, DELETE
 $id = $_GET['id'] ?? null;
 
-// Sadə ROUTER
+// Input-u oxumaq üçün funksiya (POST/PUT üçün)
+function getInputData() {
+    return json_decode(file_get_contents("php://input"), true);
+}
+
+// ROUTER
 switch ($method) {
     case 'GET':
         if ($id && isset($users[$id])) {
@@ -23,8 +28,7 @@ switch ($method) {
         break;
 
     case 'POST':
-        // Sadə test üçün POST datanı götürək
-        $input = json_decode(file_get_contents("php://input"), true);
+        $input = getInputData();
         if ($input && isset($input['name']) && isset($input['email'])) {
             $newId = max(array_keys($users)) + 1;
             $users[$newId] = [
@@ -35,6 +39,30 @@ switch ($method) {
             echo json_encode(['status' => 'created', 'user' => $users[$newId]]);
         } else {
             echo json_encode(['error' => 'Invalid data']);
+        }
+        break;
+
+    case 'PUT':
+        if ($id && isset($users[$id])) {
+            $input = getInputData();
+            if ($input) {
+                $users[$id]['name'] = $input['name'] ?? $users[$id]['name'];
+                $users[$id]['email'] = $input['email'] ?? $users[$id]['email'];
+                echo json_encode(['status' => 'updated', 'user' => $users[$id]]);
+            } else {
+                echo json_encode(['error' => 'Invalid data']);
+            }
+        } else {
+            echo json_encode(['error' => 'User not found']);
+        }
+        break;
+
+    case 'DELETE':
+        if ($id && isset($users[$id])) {
+            unset($users[$id]);
+            echo json_encode(['status' => 'deleted', 'id' => $id]);
+        } else {
+            echo json_encode(['error' => 'User not found']);
         }
         break;
 
