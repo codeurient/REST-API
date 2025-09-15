@@ -1,0 +1,75 @@
+HTTP Metodları sadə dillə
+
+HTTP metodları – serverə göndərdiyin “əmrlər”dir.
+Təsəvvür elə ki, restorana gedirsən və ofisianta sifariş verirsən. Hər sifariş bir metod kimidir:
+
+
+
+
+1. GET → “Məlumatı göstər”
+    - Heç nə dəyişmir, sadəcə baxırsan.
+    - Misal: Menyunu ofisianta göstərmək istəyirsən: “Mənə menyunu gətir.”
+    - REST-də misal: GET /kitablar → bütün kitabların siyahısını göstər.
+    - Təhlükəsizdir, çünki məlumatı silmir və dəyişmir.
+
+
+
+
+
+2. POST → “Yeni məlumat yarat”
+    - Yeni məlumat əlavə etmək üçün.
+    - Misal: Restoranda yeni sifariş verirsən: “Mənə bir pizza gətir.”
+    - REST-də misal: POST /food → yeni yemək yarat.
+    - Hər dəfə fərqli nəticə verir (çünki hər dəfə yeni bir məlumat yaranır).
+
+
+
+
+
+3. PUT → “Tam yenilə”
+    - Mövcud məlumatı tam dəyişmək üçün.
+    - Misal: Ofisianta deyirsən: “Pizza sifarişimi dəyiş, onun yerinə plov gətir.”
+    - Burada əvvəlki sifariş silinir, yeni ilə əvəz olunur.
+    - REST-də misal: PUT /food/2 → müştərinin məlumatı dəyişir.
+
+
+
+
+
+4. PATCH → “Qismən dəyiş”
+    - PUT-un kiçik qardaşıdır – tam dəyişmir, yalnız lazım olan hissəni dəyişir.
+    - Misal: “Pizzama əlavə pendir vur.” (yəni tam sifarişi dəyişmirsən, sadəcə bir detalını).
+    - REST-də misal: PATCH /food/2
+
+
+
+
+
+
+
+5. DELETE → “Sil”
+    - Məlumatı tam silmək üçün.
+    - Misal: “Sifarişimi ləğv et, heç nə gətirmə.”
+    - REST-də misal: DELETE /food/2
+
+
+
+
+
+
+
+Digərləri (çox lazım olmur, amma var):
+
+    - HEAD → sadəcə məlumatın başlığını göstərir, içini yox.
+    (Misal: “Bu pizzanın ölçüsü neçədir?”)
+
+    - OPTIONS → serverdən soruşursan: “Burada hansı əməliyyatlara icazə var?”
+    Cavab: GET, POST və s.
+
+
+
+
+
+
+
+Deməli REST, API-də işləyərkən, hər metod sadəcə serverə verdiyin fərqli bir əmrdir.
