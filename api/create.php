@@ -12,10 +12,10 @@ $post = new Post($db);
 // içindən həmin dataları Verilənlər bazasına İNSERT edirik.
 $data = json_decode(file_get_contents("php://input"));
 
-$post->title        = $data->title;
-$post->body         = $data->body;
-$post->author       = $data->author;
-$post->category_id  = $data->category_id;
+$post->title                = $data->title;
+$post->body                 = $data->body;
+$post->author               = $data->author;
+$post->category_id          = $data->category_id;
 
 if($post->create()) {
     echo json_encode(
