@@ -4,7 +4,7 @@ Bunlar API-lərin işləmə üsulu və məlumat mübadiləsi standartlarıdır:
 
 1) REST API
 2) RESTFUL API 
-3) HTTP 
+3) HTTP ( Bunu keç )
 4) SOAP 
 5) GRAPHQL 
 6) WEBSOCKET 
