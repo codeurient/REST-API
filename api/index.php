@@ -1,5 +1,10 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *, Authorization');
+header('Access-Control-Allow-Methods: *');
+header('Access-Control-Allow-Credentials: true');
 header('Content-type: json/application');
+
 require 'connect.php';
 require 'function.php';
 
@@ -18,6 +23,10 @@ if($method === 'GET') {
         } else {
             getPosts($connect);
         }
+    }
+} elseif ($method === 'POST') {
+    if ($type === 'posts') {
+        addPost($connect, $_POST);
     }
 } elseif ($method === 'PATCH') {
     if ($type === 'posts') {

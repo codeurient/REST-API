@@ -1,5 +1,5 @@
 async function getPosts() {
-    let res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    let res = await fetch('http://localhost/REST-API/api/posts');
     let posts = await res.json();
 
     posts.forEach((post) => {
@@ -14,4 +14,24 @@ async function getPosts() {
     });
     
 }
+
+
+async function addPost() {
+    const title = document.getElementById('title').value,
+          body  = document.getElementById('body').value;
+
+    let formData = new FormData();
+    formData.append('title', title);
+    formData.append('body',   body);
+
+    const res = await fetch('http://localhost/REST-API/api/posts', {
+        method: 'POST',
+        body: formData
+    });
+
+    const data = await res.json();
+    console.log(data);
+    
+}
+
 getPosts();
