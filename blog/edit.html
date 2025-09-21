@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-4">
+                <h2>Update post</h2>
+                <div class="form-group">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" id="title-edit" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="body" class="form-label">Password</label>
+                        <input type="text" id="body-edit" class="form-control">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" onclick="updatePost(window.postId)">Update post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+
+    <script>
+        window.onload = function () {
+            let post = localStorage.getItem('editPost');
+            
+            if (post) {
+                post = JSON.parse(post);
+                document.getElementById('title-edit').value = post.postTitle;
+                document.getElementById('body-edit').value = post.postBody;
+                window.postId = post.postId; // global olaraq saxlayırıq ki, update zamanı istifadə edək
+            }
+        };
+    </script>
+</body>
+</html>
