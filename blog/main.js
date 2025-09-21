@@ -1,3 +1,5 @@
+let id = null;
+
 async function getPosts() {
     let res = await fetch('http://localhost/REST-API/api/posts');
     let posts = await res.json();
@@ -55,13 +57,13 @@ async function deletePost(id) {
 }
 
 function selectPost(postId, postTitle, postBody) {
-    localStorage.setItem('editPost', JSON.stringify({ postId, postTitle, postBody }));
-    window.location.href = "edit.html"; // keçid burada olsun
+    id = postId;
+    document.getElementById('title-edit').value = postTitle;
+    document.getElementById('body-edit').value = postBody;
 }
 
 
-async function updatePost(id) {
-    
+async function updatePost() {
     const title = document.getElementById('title-edit').value,
           body  = document.getElementById('body-edit').value;
         
@@ -72,13 +74,15 @@ async function updatePost(id) {
 
     const res = await fetch(`http://localhost/REST-API/api/posts/${id}`, {
         method: "PATCH",
+        headers: {  "Content-Type": "application/json"  },
         body: JSON.stringify(data)
     })
 
     let resData = await res.json();
 
     if(resData.status === true) {
-        window.location.href = "index.html";
+        await getPosts();
+        id = null; // işi bitəndən sonra sıfırlamaq lazımdır. Əks halda UPDATE metodu birdəfə işlədikdən sonra xəta alarıq.
     }
 }
 
