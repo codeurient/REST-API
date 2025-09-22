@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kitabxana>
+  <kitab id="1">
+    <ad>Harry Potter</ad>
+    <muellif>J.K. Rowling</muellif>
+    <il>1997</il>
+  </kitab>
+  <kitab id="2">
+    <ad>Lord of the Rings</ad>
+    <muellif>J.R.R. Tolkien</muellif>
+    <il>1954</il>
+  </kitab>
+</kitabxana>
