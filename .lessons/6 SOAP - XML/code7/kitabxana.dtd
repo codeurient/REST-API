@@ -1,0 +1,5 @@
+<!ELEMENT kitabxana (kitab+)>
+<!ELEMENT kitab (ad, muellif, il)>
+<!ELEMENT ad (#PCDATA)>
+<!ELEMENT muellif (#PCDATA)>
+<!ELEMENT il (#PCDATA)>
