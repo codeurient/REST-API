@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"     xmlns:tns="http://example.com/calc"                 targetNamespace="http://example.com/calc">
+
+  <types>
+    <xsd:schema targetNamespace="http://example.com/calc">
+      <xsd:element name="Add">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="num1" type="xsd:int"/>
+            <xsd:element name="num2" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddResponse" type="xsd:int"/>
+    </xsd:schema>
+  </types>
+
+  <message name="AddRequest">
+    <part name="parameters" element="tns:Add"/>
+  </message>
+  <message name="AddResponse">
+    <part name="parameters" element="tns:AddResponse"/>
+  </message>
+
+  <portType name="CalculatorPortType">
+    <operation name="Add">
+      <input message="tns:AddRequest"/>
+      <output message="tns:AddResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="CalculatorBinding" type="tns:CalculatorPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Add">
+      <soap:operation soapAction="http://example.com/Add"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+  </binding>
+
+  <service name="CalculatorService">
+    <port name="CalculatorPort" binding="tns:CalculatorBinding">
+      <soap:address location="http://localhost/REST-API/Calculator.php"/>
+    </port>
+  </service>
+</definitions>
