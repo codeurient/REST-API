@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CustomerService"
+    targetNamespace="http://localhost/REST-API/wsdl/customer"
+    xmlns:tns="http://localhost/REST-API/wsdl/customer"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!-- Mesajlar -->
+    <message name="AddCustomerRequest">
+        <part name="name" type="xsd:string"/>
+        <part name="email" type="xsd:string"/>
+    </message>
+    <message name="AddCustomerResponse">
+        <part name="result" type="xsd:string"/>
+    </message>
+
+    <message name="GetCustomerRequest">
+        <part name="id" type="xsd:int"/>
+    </message>
+    <message name="GetCustomerResponse">
+        <part name="id" type="xsd:int"/>
+        <part name="name" type="xsd:string"/>
+        <part name="email" type="xsd:string"/>
+    </message>
+
+    <message name="UpdateCustomerRequest">
+        <part name="id" type="xsd:int"/>
+        <part name="name" type="xsd:string"/>
+        <part name="email" type="xsd:string"/>
+    </message>
+    <message name="UpdateCustomerResponse">
+        <part name="result" type="xsd:string"/>
+    </message>
+
+    <!-- PortType -->
+    <portType name="CustomerPortType">
+        <operation name="AddCustomer">
+            <input message="tns:AddCustomerRequest"/>
+            <output message="tns:AddCustomerResponse"/>
+        </operation>
+        <operation name="GetCustomer">
+            <input message="tns:GetCustomerRequest"/>
+            <output message="tns:GetCustomerResponse"/>
+        </operation>
+        <operation name="UpdateCustomer">
+            <input message="tns:UpdateCustomerRequest"/>
+            <output message="tns:UpdateCustomerResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="CustomerBinding" type="tns:CustomerPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="AddCustomer">
+            <soap:operation soapAction="urn:AddCustomer"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+        <operation name="GetCustomer">
+            <soap:operation soapAction="urn:GetCustomer"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+        <operation name="UpdateCustomer">
+            <soap:operation soapAction="urn:UpdateCustomer"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+    </binding>
+
+    <!-- Service -->
+    <service name="CustomerService">
+        <port name="CustomerPort" binding="tns:CustomerBinding">
+            <soap:address location="http://localhost/REST-API/server.php"/>
+        </port>
+    </service>
+</definitions>
