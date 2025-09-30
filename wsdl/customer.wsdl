@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CustomerService"
+    targetNamespace="http://localhost/REST-API/wsdl/customer"
+    xmlns:tns="http://localhost/REST-API/wsdl/customer"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!-- Complex Types -->
+    <types>
+        <xsd:schema targetNamespace="http://localhost/REST-API/wsdl/customer">
+
+            <xsd:complexType name="Customer">
+                <xsd:sequence>
+                    <xsd:element name="id" type="xsd:int"/>
+                    <xsd:element name="name" type="xsd:string"/>
+                    <xsd:element name="email" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="CustomerList">
+                <xsd:sequence>
+                    <xsd:element name="customer" type="tns:Customer" minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+        </xsd:schema>
+    </types>
+
+    <!-- Messages -->
+    <message name="AddCustomerRequest">
+        <part name="name" type="xsd:string"/>
+        <part name="email" type="xsd:string"/>
+    </message>
+    <message name="AddCustomerResponse">
+        <part name="result" type="xsd:string"/>
+    </message>
+
+    <message name="GetAllCustomerRequest"/>
+    <message name="GetAllCustomerResponse">
+        <part name="customers" type="tns:CustomerList"/>
+    </message>
+
+    <message name="GetCustomerRequest">
+        <part name="id" type="xsd:int"/>
+    </message>
+    <message name="GetCustomerResponse">
+        <part name="customer" type="tns:Customer"/>
+    </message>
+
+    <message name="UpdateCustomerRequest">
+        <part name="id" type="xsd:int"/>
+        <part name="name" type="xsd:string"/>
+        <part name="email" type="xsd:string"/>
+    </message>
+    <message name="UpdateCustomerResponse">
+        <part name="result" type="xsd:string"/>
+    </message>
+
+    <message name="DeleteCustomerRequest">
+        <part name="id" type="xsd:int"/>
+    </message>
+    <message name="DeleteCustomerResponse">
+        <part name="result" type="xsd:string"/>
+    </message>
+
+    <!-- PortType -->
+    <portType name="CustomerPortType">
+        <operation name="AddCustomer">
+            <input message="tns:AddCustomerRequest"/>
+            <output message="tns:AddCustomerResponse"/>
+        </operation>
+        <operation name="GetAllCustomer">
+            <input message="tns:GetAllCustomerRequest"/>
+            <output message="tns:GetAllCustomerResponse"/>
+        </operation>
+        <operation name="GetCustomer">
+            <input message="tns:GetCustomerRequest"/>
+            <output message="tns:GetCustomerResponse"/>
+        </operation>
+        <operation name="UpdateCustomer">
+            <input message="tns:UpdateCustomerRequest"/>
+            <output message="tns:UpdateCustomerResponse"/>
+        </operation>
+        <operation name="DeleteCustomer">
+            <input message="tns:DeleteCustomerRequest"/>
+            <output message="tns:DeleteCustomerResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="CustomerBinding" type="tns:CustomerPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="AddCustomer">
+            <soap:operation soapAction="urn:AddCustomer"/>
+            <input><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></input>
+            <output><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></output>
+        </operation>
+        <operation name="GetAllCustomer">
+            <soap:operation soapAction="urn:GetAllCustomer"/>
+            <input><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></input>
+            <output><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></output>
+        </operation>
+        <operation name="GetCustomer">
+            <soap:operation soapAction="urn:GetCustomer"/>
+            <input><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></input>
+            <output><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></output>
+        </operation>
+        <operation name="UpdateCustomer">
+            <soap:operation soapAction="urn:UpdateCustomer"/>
+            <input><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></input>
+            <output><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></output>
+        </operation>
+        <operation name="DeleteCustomer">
+            <soap:operation soapAction="urn:DeleteCustomer"/>
+            <input><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></input>
+            <output><soap:body use="literal" namespace="http://localhost/REST-API/wsdl/customer"/></output>
+        </operation>
+    </binding>
+
+    <!-- Service -->
+    <service name="CustomerService">
+        <port name="CustomerPort" binding="tns:CustomerBinding">
+            <soap:address location="http://localhost/REST-API/server.php"/>
+        </port>
+    </service>
+</definitions>
