@@ -1,0 +1,26 @@
+# Schema: Bu, API-nin menyusudur, hansı məlumatların alınacağını və necə alınacağını təyin edir.
+# schema direktivi: GraphQL-in giriş nöqtələrini (query, mutation və s.) təyin edir.
+schema {
+  query: Query # Query tipi məlumat oxumaq üçün istifadə olunur.
+}
+
+# Query tipi: Müştərilərin (client) sorğuları üçün əsas giriş nöqtəsidir.
+type Query {
+  notes: [Note!]! # Bütün qeydləri qaytarır. [Note!] siyahı içindəki hər Note null ola bilməz, siyahı özü də null ola bilməz (!).
+}
+
+# Note tipi: Bir qeyd obyektini təsvir edir (məsələn, bir notun başlığı, təsviri və müəllifi).
+type Note {
+  id: ID!           # Qeydin unikal identifikatoru, mütləq olmalıdır (null ola bilməz).
+  title: String!    # Qeydin başlığı, mütləq mətn olmalıdır.
+  description: String! # Qeydin təsviri, mütləq mətn olmalıdır.
+  author: Author!   # Qeydin müəllifi, Author tipi ilə bağlıdır və mütləq olmalıdır.
+}
+
+# Author tipi: Müəllif obyektini təsvir edir.
+type Author {
+  id: ID!           # Müəllifin unikal identifikatoru, mütləq olmalıdır.
+  name: String!     # Müəllifin adı, mütləq mətn olmalıdır.
+  age: Int!         # Müəllifin yaşı, mütləq tam ədəd olmalıdır.
+  photo: String     # Müəllifin şəkli (URL), opsionaldır (null ola bilər).
+}
