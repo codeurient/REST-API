@@ -1,4 +1,9 @@
 <?php
+header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Credentials: true"); // If you need to send cookies or authentication headers
+
 use GraphQL\GraphQL;
 use GraphQL\Utils\BuildSchema;
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -9,8 +14,8 @@ $fakeDatabase = [
         ['id' => '2', 'title' => 'İkinci Qeyd', 'description' => 'Bu ikinci qeyddir', 'authorId' => '2'],
     ],
     'authors' => [
-        ['id' => '1', 'name' => 'Ali', 'age' => 30, 'photo' => null],
-        ['id' => '2', 'name' => 'Veli', 'age' => 25, 'photo' => 'http://example.com/veli.jpg'],
+        ['id' => '1', 'name' => 'Ali', 'age' => 30,  'photo' => 'https://i.redd.it/becdb8b5twt01.jpg'],
+        ['id' => '2', 'name' => 'Veli', 'age' => 25, 'photo' => 'https://images5.alphacoders.com/423/thumb-1920-423529.jpg'],
     ]
 ];
 
